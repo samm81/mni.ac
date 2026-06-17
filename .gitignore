@@ -1,2 +1,6 @@
 .env
 .env.*
+
+/home/dot-config/restic/env
+/home/dot-config/restic/password
+

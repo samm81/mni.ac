@@ -1,0 +1,7 @@
+[Unit]
+Description=User backup job
+
+[Service]
+Type=oneshot
+EnvironmentFile=%h/.config/restic/env
+ExecStart=%h/opt/scripts/backup-now.bash
