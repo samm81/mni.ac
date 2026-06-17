@@ -1,0 +1,42 @@
+services:
+  beszel:
+    image: henrygd/beszel:latest
+    container_name: beszel
+    restart: unless-stopped
+    env_file:
+      - .env.beszel
+    ports:
+      - 8090:8090
+    volumes:
+      - "${HOME}/opt/state/beszel/beszel_data:/beszel_data"
+      - "${HOME}/opt/state/beszel/beszel_socket:/beszel_socket"
+    networks:
+      - ingress
+    healthcheck:
+      test: ['CMD', '/beszel', 'health', '--url', 'http://localhost:8090']
+      interval: 120s
+      start_period: 10s
+      timeout: 5s
+
+  beszel-agent:
+    image: henrygd/beszel-agent
+    container_name: beszel-agent
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - "${HOME}/opt/state/beszel/beszel_agent_data:/var/lib/beszel-agent"
+      - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket:ro
+      - /var/run/systemd/private:/var/run/systemd/private:ro
+      # monitor other disks / partitions by mounting a folder in /extra-filesystems
+      # - /mnt/disk/.beszel:/extra-filesystems/sda1:ro
+    env_file:
+      - .env.beszel_agent
+    healthcheck:
+      test: ['CMD', '/agent', 'health']
+      interval: 120s
+
+networks:
+  ingress:
+    external: true
+    name: ingress
