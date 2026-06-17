@@ -1,0 +1,48 @@
+https://mni.ac {
+    header Content-Type "text/html; charset=utf-8"
+    respond <<HTML
+<!doctype html>
+<html>
+  <head>
+    <style>
+      html { height: 100%; }
+      body { height: 100%; display: grid; place-items: center; background: #500; margin: 0; }
+      #ram { font-size: 100px; }
+      #version { color: white; text-align: right; }
+    </style>
+  </head>
+  <body>
+    <div><div id="ram">&#x2648;</div><div id="version">2.0</div></div>
+  </body>
+</html>
+HTML 200
+}
+
+https://dash.mni.ac {
+#    basic_auth bcrypt {
+#        {$BASIC_AUTH_CREDS}
+#    }
+    reverse_proxy beszel:8090
+}
+
+https://stsh.mni.ac {
+    reverse_proxy filestash:8334
+}
+
+https://status.mni.ac {
+    reverse_proxy uptime-kuma:3001
+}
+
+https://st.mni.ac {
+    reverse_proxy host.docker.internal:8384
+}
+
+https://a.mni.ac {
+    root * /srv
+    file_server browse
+}
+
+https://claw.mni.ac {
+    root * /claw/srv
+    file_server browse
+}

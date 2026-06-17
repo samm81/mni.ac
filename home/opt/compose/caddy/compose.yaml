@@ -1,0 +1,25 @@
+services:
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./conf/Caddyfile:/etc/caddy/Caddyfile:ro
+      - "${HOME}/opt/state/caddy/data:/data"
+      - "${HOME}/opt/state/caddy/config:/config"
+      - "${HOME}/srv:/srv"
+      - "${CLAW_SRV}:/claw/srv"
+    networks:
+      - ingress
+
+networks:
+  ingress:
+    external: true
+    name: ingress
