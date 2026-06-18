@@ -14,7 +14,7 @@ services:
       - ./conf/Caddyfile:/etc/caddy/Caddyfile:ro
       - "${HOME}/opt/state/caddy/data:/data"
       - "${HOME}/opt/state/caddy/config:/config"
-      - "${HOME}/srv:/srv"
+      - "${HOME}/opt/srv:/srv"
       - "${CLAW_SRV}:/claw/srv"
     networks:
       - ingress

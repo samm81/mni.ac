@@ -22,8 +22,6 @@ restic backup \
   --exclude "${HOME}/opt/**/cache" \
   --exclude "${HOME}/opt/state/beszel"
   "${HOME}/etc" \
-  "${HOME}/srv" \
-  "${HOME}/dot_config" \
   --exclude-caches
 
 # Retention
