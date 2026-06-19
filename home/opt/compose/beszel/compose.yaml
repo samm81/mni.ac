@@ -5,8 +5,6 @@ services:
     restart: unless-stopped
     env_file:
       - .env.beszel
-    ports:
-      - 8090:8090
     volumes:
       - "${HOME}/opt/state/beszel/beszel_data:/beszel_data"
       - "${HOME}/opt/state/beszel/beszel_socket:/beszel_socket"
