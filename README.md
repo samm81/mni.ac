@@ -9,3 +9,4 @@ usage
 1. for dir in `~/opt/compose/` `~/opt/scripts/systemd-enable-service.sh $dir`
 1. `cp ~/.config/restic/{env.example,env}` and modify as needed
 1. `openssl rand -base64 48 > ~/.config/restic/password`
+1. install and configure syncthing
