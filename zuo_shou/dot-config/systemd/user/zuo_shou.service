@@ -1,0 +1,7 @@
+[Unit]
+Description=zuo_shou
+
+[Service]
+Type=exec
+WorkingDirectory=%h/opt/apps/zuo_shou
+ExecStart=%h/opt/apps/zuo_shou/rel/zuo_shou/bin/zuo_shou start
