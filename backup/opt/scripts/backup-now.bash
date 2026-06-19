@@ -23,6 +23,7 @@ restic backup \
   --exclude "${HOME}/opt/state/beszel" \
   --exclude "${HOME}/opt/state/caddy" \
   "${HOME}/etc" \
+  "${HOME}/.local/state" \
   --exclude-caches
 
 # Retention
