@@ -4,3 +4,4 @@
 /backup/dot-config/restic/env
 /backup/dot-config/restic/password
 
+/postgres/opt/compose/postgres/apps.env
