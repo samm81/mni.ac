@@ -2,6 +2,7 @@
 
 usage
 
+1. `sudo loginctl enable-linger $(whoami)`
 1. `git clone`
 1. `stow --dotfiles home`
 1. `sudo ln -sf ~/etc/systemd/system/compose-app@.service /etc/systemd/system`
