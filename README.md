@@ -19,3 +19,7 @@ usage
 1. [on dev server] `make deploy-prod`
 1. `stow zuo_shou`
 1. `systemctl --user daemon-reload && systemctl --user enable --now zuo_shou.service`
+
+`pesterbo2.0`
+
+same as `zuo_shou`
