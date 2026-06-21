@@ -46,3 +46,7 @@ https://claw.mni.ac {
     root * /claw/srv
     file_server browse
 }
+
+https://pb.mni.ac {
+    reverse_proxy host.docker.internal:9910
+}

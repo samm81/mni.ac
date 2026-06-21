@@ -1,0 +1,13 @@
+[Unit]
+Description=pesterbot2.0
+
+[Service]
+Type=exec
+WorkingDirectory=%h/opt/apps/pesterbot2.0
+EnvironmentFile=%h/opt/apps/pesterbot2.0/.env
+ExecStart=%h/opt/apps/pesterbot2.0/rel/pesterbot/bin/pesterbot start
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
