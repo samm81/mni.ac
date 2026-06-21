@@ -20,10 +20,6 @@ restic backup \
   --exclude "${HOME}/opt/**/.cache" \
   --exclude "${HOME}/opt/**/tmp" \
   --exclude "${HOME}/opt/**/cache" \
-  --exclude "${HOME}/opt/state/beszel" \
-  --exclude "${HOME}/opt/state/caddy" \
-  --exclude "${HOME}/opt/state/postgres" \
-  "${HOME}/etc" \
   "${HOME}/.local/state" \
   --exclude-caches
 

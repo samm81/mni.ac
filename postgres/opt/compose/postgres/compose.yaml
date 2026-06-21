@@ -2,6 +2,7 @@ services:
   postgres:
     image: postgres:18
     restart: unless-stopped
+    user: "${PUID:?missing PUID}:${PGID:?missing PGID}"
     env_file:
       - .env
     environment:

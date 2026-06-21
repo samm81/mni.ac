@@ -3,6 +3,7 @@ services:
     image: henrygd/beszel:latest
     container_name: beszel
     restart: unless-stopped
+    user: "${PUID:?missing PUID}:${PGID:?missing PGID}"
     env_file:
       - .env.beszel
     volumes:
@@ -20,6 +21,7 @@ services:
     image: henrygd/beszel-agent
     container_name: beszel-agent
     restart: unless-stopped
+    user: "${PUID:?missing PUID}:${PGID:?missing PGID}"
     network_mode: host
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro

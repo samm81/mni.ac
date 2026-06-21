@@ -2,6 +2,7 @@ services:
   caddy:
     image: caddy:2-alpine
     restart: unless-stopped
+    user: "${PUID:?missing PUID}:${PGID:?missing PGID}"
     env_file:
       - .env
     ports:
