@@ -5,3 +5,8 @@ Description=zuo_shou
 Type=exec
 WorkingDirectory=%h/opt/apps/zuo_shou
 ExecStart=%h/opt/apps/zuo_shou/rel/zuo_shou/bin/zuo_shou start
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
