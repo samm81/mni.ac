@@ -1,5 +1,8 @@
 [Unit]
 Description=pesterbot2.0
+Requires=compose-app@postgres.service
+After=compose-app@postgres.service network-online.target
+Wants=network-online.target
 
 [Service]
 Type=exec

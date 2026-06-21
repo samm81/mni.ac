@@ -1,5 +1,7 @@
 [Unit]
 Description=zuo_shou
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=exec
