@@ -28,3 +28,6 @@ restic forget --prune \
   --keep-daily 7 \
   --keep-weekly 4 \
   --keep-monthly 6
+
+# register success with `uptime-kuma`
+curl -fsS "https://localhost:3001/api/push/NyxyUIg9u59PcneRj1wIiZXAuPcwhSSO?status=up&msg=backup-success&ping="
