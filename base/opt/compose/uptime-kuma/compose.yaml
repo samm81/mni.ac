@@ -3,6 +3,8 @@ services:
     image: louislam/uptime-kuma:2
     restart: unless-stopped
     user: "${PUID:?missing PUID}:${PGID:?missing PGID}"
+    group_add:
+      - "${DOCKER_GID:?missing DOCKER_GID}"
     volumes:
       - "${HOME}/opt/state/uptime-kuma/data:/app/data"
       - /var/run/docker.sock:/var/run/docker.sock
