@@ -30,4 +30,4 @@ restic forget --prune \
   --keep-monthly 6
 
 # register success with `uptime-kuma`
-curl -fsS "https://localhost:3001/api/push/NyxyUIg9u59PcneRj1wIiZXAuPcwhSSO?status=up&msg=backup-success&ping="
+curl -fsS "http://localhost:3001/api/push/NyxyUIg9u59PcneRj1wIiZXAuPcwhSSO?status=up&msg=backup-success&ping="
