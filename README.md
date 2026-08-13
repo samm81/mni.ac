@@ -33,4 +33,8 @@ for optional packages, run `stow --dotfiles <package>` from `~/mni.ac`. follow t
 
 `pesterbot2.0`
 
-same as `zuo_shou`, with `postgres` configured first (and an `.env` file).
+same as `zuo_shou`, with `postgres` configured first and a `.env` file
+
+`timeline-cities`
+
+same as `zuo_shou` but with a `.env` file and a `.timer` `systemd` unit
