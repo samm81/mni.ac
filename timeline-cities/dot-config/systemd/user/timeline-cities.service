@@ -1,0 +1,11 @@
+[Unit]
+Description=refresh the timeline cities ledger
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/opt/apps/timeline-cities
+EnvironmentFile=%h/.config/timeline-cities/env
+ExecStart=%h/opt/apps/timeline-cities/scripts/refresh-timeline %h/opt/apps/timeline-cities ${TIMELINE_DATA_DIRECTORY}
+TimeoutStartSec=0

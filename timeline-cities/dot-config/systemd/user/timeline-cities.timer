@@ -1,0 +1,10 @@
+[Unit]
+Description=refresh the timeline cities ledger before the daily backup
+
+[Timer]
+OnCalendar=*-*-* 02:45:00
+Persistent=true
+Unit=timeline-cities.service
+
+[Install]
+WantedBy=timers.target
