@@ -1,3 +1,3 @@
 ### usage
 
-after edditing `conf/Caddyfile`: `sudo systemctl restart compose-app@caddy.service`
+after editing `~/opt/compose/caddy/conf/Caddyfile`, run `systemctl --user restart compose-app@caddy.service`.
