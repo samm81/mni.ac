@@ -12,6 +12,8 @@ the bundle contains a standalone `uv` executable. uv downloads the required pyth
 
 the refresh wrapper is installed at `~/opt/scripts/refresh-timeline.bash`. the application repository does not contain this server-specific script. when called with only the application directory, it reads simple values from `.env`, adds only the options that are set, and invokes `timeline_cities.py`. it also accepts explicit `timeline_cities.py` arguments for manual runs.
 
+the service first runs `~/opt/scripts/merge-gpx.bash`. set `TIMELINE_GPX_DIRECTORIES` to a colon-separated list of source directories in ascending priority order. later directories replace earlier files with the same name. the script creates a fresh temporary staging directory under `${TMPDIR:-/tmp}`, runs the refresh, and removes the staging directory afterward. set the standard `TMPDIR` variable if the GPX collection needs a larger disk-backed temporary filesystem. a missing source directory fails the run.
+
 copy `env.example` to `.env` and set the input and output paths. optional settings are commented out with example values. uncomment and edit them only when overriding an application default; copied configurations then remain free to receive future default changes. the service passes these values to `timeline_cities.py`; the application repository does not choose the location of the synced data.
 
 the Google Timeline input is optional. uncomment `TIMELINE_GOOGLE_TIMELINE` when an export is available. unset values produce no corresponding arguments. `--overwrite` is enabled for unattended runs. `timeline_cities.py` stages its CSV outputs and atomically replaces the published files.
@@ -27,4 +29,4 @@ systemctl --user enable --now timeline-cities.timer
 
 the timer runs at 02:45. the backup timer runs independently at 03:15.
 
-the initial package does not install a `.path` unit. add one in the future if faster refreshes become useful. a path unit can watch the synced GPX and Google Timeline directories and start the same service after a file change. add a debounce step at that time because Syncthing can update several files in one transfer.
+the initial package does not install a `.path` unit. add one in the future if faster refreshes become useful. a path unit can watch all configured GPX directories and the Google Timeline directory, then start the same service after a file change. add a debounce step at that time because Syncthing can update several files in one transfer.
