@@ -7,5 +7,5 @@ Wants=network-online.target
 Type=oneshot
 WorkingDirectory=%h/opt/apps/timeline-cities
 EnvironmentFile=%h/.config/timeline-cities/.env
-ExecStart=%h/opt/scripts/refresh-timeline.bash %h/opt/apps/timeline-cities
+ExecStart=%h/opt/scripts/merge-gpx.bash %h/opt/apps/timeline-cities
 TimeoutStartSec=0
