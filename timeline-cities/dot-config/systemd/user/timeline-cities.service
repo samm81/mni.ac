@@ -6,6 +6,6 @@ Wants=network-online.target
 [Service]
 Type=oneshot
 WorkingDirectory=%h/opt/apps/timeline-cities
-EnvironmentFile=%h/.config/timeline-cities/env
-ExecStart=%h/opt/apps/timeline-cities/scripts/refresh-timeline %h/opt/apps/timeline-cities ${TIMELINE_DATA_DIRECTORY}
+EnvironmentFile=%h/.config/timeline-cities/.env
+ExecStart=%h/opt/scripts/refresh-timeline.bash %h/opt/apps/timeline-cities
 TimeoutStartSec=0
