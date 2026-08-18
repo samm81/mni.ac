@@ -16,6 +16,8 @@ copy `env.example` to `.env` and set the input and output paths. optional settin
 
 the Google Timeline input is optional. uncomment `TIMELINE_GOOGLE_TIMELINE` when an export is available. unset values produce no corresponding arguments. `--overwrite` is enabled for unattended runs. `timeline_cities.py` stages its CSV outputs and atomically replaces the published files.
 
+to monitor successful runs with Uptime Kuma, create a Push monitor and uncomment `TIMELINE_UPTIME_KUMA_PUSH_URL` in `.env`. the script calls that URL only after a successful refresh. if the heartbeat request fails, the service exits non-zero. keep `.env` private because the push URL contains the monitor token. `curl` must be installed on the server when push monitoring is enabled.
+
 enable the timer after the bundle and `.env` file are ready:
 
 ```sh

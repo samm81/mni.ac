@@ -48,6 +48,30 @@ argument_append() {
 	fi
 }
 
+heartbeat_send() {
+	local uptime_kuma_url=${TIMELINE_UPTIME_KUMA_PUSH_URL:-}
+
+	if [[ -z $uptime_kuma_url ]]; then
+		return 0
+	fi
+	if ! command -v curl >/dev/null 2>&1; then
+		printf 'error: required command not found: curl\n' >&2
+		exit 1
+	fi
+
+	curl \
+		--fail \
+		--location \
+		--silent \
+		--show-error \
+		--connect-timeout 5 \
+		--max-time 15 \
+		--retry 3 \
+		--retry-delay 1 \
+		--output /dev/null \
+		"$uptime_kuma_url"
+}
+
 if [[ $# -eq 0 ]]; then
 	value_required TIMELINE_GPX_DIRECTORY
 	value_required TIMELINE_OUTPUT
@@ -109,4 +133,5 @@ if ! flock -n 9; then
 fi
 
 cd "$app_directory"
-exec "$uv_command_path" run --locked --script "$app_directory/timeline_cities.py" "${timeline_arguments[@]}"
+"$uv_command_path" run --locked --script "$app_directory/timeline_cities.py" "${timeline_arguments[@]}"
+heartbeat_send
