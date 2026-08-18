@@ -34,7 +34,7 @@ for entry in "${POSTGRES_APPS[@]}"; do
 
   echo "Applying db=$db user=$user"
 
-  docker compose exec -T postgres psql -U postgres -d postgres <<SQL
+  docker exec postgres-postgres-1 psql -U postgres -d postgres <<SQL
 DO \$\$
 BEGIN
   IF NOT EXISTS (
