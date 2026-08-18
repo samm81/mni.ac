@@ -50,3 +50,7 @@ https://claw.mni.ac {
 https://pb.mni.ac {
     reverse_proxy host.docker.internal:9910
 }
+
+https://mapper.mni.ac {
+    reverse_proxy host.docker.internal:7349
+}
