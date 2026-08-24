@@ -7,6 +7,14 @@ services:
     environment:
     - APPLICATION_URL=
     - CANARY=true
+    # to reset the password, first generate a `bcrypt` of some temp password
+    # https://www.filestash.app/2023/05/01/bcrypt-online/
+    # then set it here as the `ADMIN_PASSWORD`
+    # make sure to `s/\$/$$/g`
+    # then restart the docker service
+    #- ADMIN_PASSWORD=$$2y$$12$$xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    # then go to https://stsh.mni.ac/admin/setup
+    #
     #- OFFICE_URL=http://wopi_server:9980
     #- OFFICE_FILESTASH_URL=http://app:8334
     #- OFFICE_REWRITE_URL=http://127.0.0.1:9980
