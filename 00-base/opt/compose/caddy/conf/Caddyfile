@@ -1,4 +1,4 @@
-https://mni.ac {
+https://{$DOMAIN} {
     header Content-Type "text/html; charset=utf-8"
     respond <<HTML
 <!doctype html>
@@ -18,40 +18,40 @@ https://mni.ac {
 HTML 200
 }
 
-https://dash.mni.ac {
+https://dash.{$DOMAIN} {
 #    basic_auth bcrypt {
 #        {$BASIC_AUTH_CREDS}
 #    }
     reverse_proxy beszel:8090
 }
 
-https://stsh.mni.ac {
+https://stsh.{$DOMAIN} {
     reverse_proxy filestash:8334
 }
 
-https://status.mni.ac {
+https://status.{$DOMAIN} {
     reverse_proxy uptime-kuma:3001
 }
 
-https://st.mni.ac {
+https://st.{$DOMAIN} {
     reverse_proxy host.docker.internal:8384
 }
 
-https://a.mni.ac {
+https://a.{$DOMAIN} {
     root * /srv
     file_server browse
 }
 
-https://claw.mni.ac {
+https://claw.{$DOMAIN} {
     root * /claw/srv
     file_server browse
 }
 
-https://pb.mni.ac {
+https://pb.{$DOMAIN} {
     reverse_proxy host.docker.internal:9910
 }
 
-https://mapper.mni.ac {
+https://mapper.{$DOMAIN} {
     reverse_proxy host.docker.internal:7349
 }
 
