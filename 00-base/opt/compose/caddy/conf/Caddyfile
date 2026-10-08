@@ -54,3 +54,5 @@ https://pb.mni.ac {
 https://mapper.mni.ac {
     reverse_proxy host.docker.internal:7349
 }
+
+import sites-enabled/*

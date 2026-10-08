@@ -1,0 +1,3 @@
+cockpit.mni.ac {
+    reverse_proxy host.docker.internal:9090
+}
