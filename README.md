@@ -17,7 +17,7 @@ usage
 1. `systemctl --user daemon-reload`
 1. `systemctl --user enable --now compose-app@caddy.service compose-app@beszel.service compose-app@uptime-kuma.service vps-backup.timer`
 1. [install and configure `syncthing`](https://docs.syncthing.net/intro/getting-started.html#getting-started)
-1. [install and configure `cockpit`](https://cockpit-project.org/running.html) && `stow --dotfiles --no-folding 30-cockpit`
+1. [install and configure `cockpit`](https://cockpit-project.org/running.html) && `stow --no-folding 30-cockpit`
 
 for optional packages (`99-*` packages), run `stow --dotfiles <package>` from `~/${REPO_ROOT}`. follow the package instructions before enabling its service.
 
