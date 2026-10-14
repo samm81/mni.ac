@@ -18,7 +18,11 @@ usage
 1. `systemctl --user enable --now compose-app@caddy.service compose-app@beszel.service compose-app@uptime-kuma.service vps-backup.timer`
 1. [install and configure `syncthing`](https://docs.syncthing.net/intro/getting-started.html#getting-started)
 
-`cockpit` (recommended)
+## optional packages
+
+generally: run `stow --dotfiles <package>` from `~/${REPO_ROOT}`. follow the package instructions before enabling its service.
+
+### `cockpit` (recommended)
 
 1. [install and configure `cockpit`](https://cockpit-project.org/running.html)
 1. `stow --no-folding 30-cockpit`
@@ -28,15 +32,11 @@ usage
 1. `sudo systemctl restart cockpit.service`
 1. `systemctl --user restart compose-app@caddy.service`
 
-for optional packages (`99-*` packages), run `stow --dotfiles <package>` from `~/${REPO_ROOT}`. follow the package instructions before enabling its service.
-
-packages that add caddy sites should put the site file in `opt/compose/caddy/conf/sites-enabled/` and a matching mount fragment in `opt/compose/caddy/compose.d/`. stow them with `--no-folding`, then restart `compose-app@caddy.service`.
-
-`postgres`
+### `postgres`
 
 1. after `postgres` starts, run `~/opt/compose/postgres/configure.bash`
 
-`zuo_shou`
+### `zuo_shou`
 
 1. [on dev server] `git clone zuo_shou && cd zuo_shou`
 1. [on dev server] set `DEPLOY_PATH='hostname.tld:~/opt/apps/zuo_shou'` in `.env`
@@ -44,10 +44,12 @@ packages that add caddy sites should put the site file in `opt/compose/caddy/con
 1. `cd "$HOME/${REPO_ROOT}" && stow --dotfiles zuo_shou`
 1. `systemctl --user daemon-reload && systemctl --user enable --now zuo_shou.service`
 
-`pesterbot2.0`
+### `pesterbot2.0`
 
-same as `zuo_shou`, with `postgres` configured first and a `.env` file
+depends on `postgres`
 
-`timeline-cities`
+same as `zuo_shou`, with an `.env` file
 
-same as `zuo_shou` but with a `.env` file and a `.timer` `systemd` unit
+### `timeline-cities`
+
+same as `zuo_shou` but with an `.env` file and a `.timer` `systemd` unit
