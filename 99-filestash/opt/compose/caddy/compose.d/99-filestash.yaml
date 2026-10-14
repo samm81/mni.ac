@@ -1,0 +1,4 @@
+services:
+  caddy:
+    volumes:
+      - ./conf/sites-enabled/filestash.caddy:/etc/caddy/sites-enabled/filestash.caddy:ro

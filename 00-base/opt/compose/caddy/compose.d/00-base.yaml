@@ -1,0 +1,4 @@
+services:
+  caddy:
+    volumes:
+      - ./conf/sites-enabled/base.caddy:/etc/caddy/sites-enabled/base.caddy:ro
