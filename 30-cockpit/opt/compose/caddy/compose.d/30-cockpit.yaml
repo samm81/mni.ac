@@ -1,0 +1,4 @@
+services:
+  caddy:
+    volumes:
+      - ./conf/sites-enabled/cockpit.caddy:/etc/caddy/sites-enabled/cockpit.caddy:ro

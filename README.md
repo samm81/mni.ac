@@ -17,9 +17,11 @@ usage
 1. `systemctl --user daemon-reload`
 1. `systemctl --user enable --now compose-app@caddy.service compose-app@beszel.service compose-app@uptime-kuma.service vps-backup.timer`
 1. [install and configure `syncthing`](https://docs.syncthing.net/intro/getting-started.html#getting-started)
-1. [install and configure `cockpit`](https://cockpit-project.org/running.html) && `stow --no-folding 30-cockpit`
+1. (recommended) [install and configure `cockpit`](https://cockpit-project.org/running.html) && `stow --no-folding 30-cockpit` && `systemctl --user restart compose-app@caddy.service`
 
 for optional packages (`99-*` packages), run `stow --dotfiles <package>` from `~/${REPO_ROOT}`. follow the package instructions before enabling its service.
+
+packages that add caddy sites should put the site file in `opt/compose/caddy/conf/sites-enabled/` and a matching mount fragment in `opt/compose/caddy/compose.d/`. stow them with `--no-folding`, then restart `compose-app@caddy.service`.
 
 `postgres`
 
