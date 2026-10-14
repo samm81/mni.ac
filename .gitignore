@@ -5,3 +5,5 @@
 /backup/dot-config/restic/password
 
 /postgres/opt/compose/postgres/apps.env
+
+/30-cockpit-system/etc/cockpit/cockpit.conf
