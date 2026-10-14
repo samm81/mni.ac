@@ -1,0 +1,4 @@
+services:
+  caddy:
+    volumes:
+      - ./conf/sites-enabled/pesterbot2.0.caddy:/etc/caddy/sites-enabled/pesterbot2.0.caddy:ro
