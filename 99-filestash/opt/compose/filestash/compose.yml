@@ -13,7 +13,7 @@ services:
     # make sure to `s/\$/$$/g`
     # then restart the docker service
     #- ADMIN_PASSWORD=$$2y$$12$$xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    # then go to https://stsh.mni.ac/admin/setup
+    # then go to https://stsh.${DOMAIN}/admin/setup
     #
     #- OFFICE_URL=http://wopi_server:9980
     #- OFFICE_FILESTASH_URL=http://app:8334
