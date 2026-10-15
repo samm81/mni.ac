@@ -19,7 +19,7 @@ a few gnu stow packages for a single-user server
 
 ## optional packages
 
-generally: run `stow --dotfiles --no-folding <package>` from `~/${REPO_ROOT}`. follow the package instructions before enabling its service.
+generally: run `stow --dotfiles --no-folding <package>`. follow the package instructions before enabling its service.
 
 ### `claw`
 
