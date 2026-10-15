@@ -1,0 +1,5 @@
+services:
+  caddy:
+    volumes:
+      - ./conf/sites-enabled/srv.caddy:/etc/caddy/sites-enabled/srv.caddy:ro
+      - "${HOME}/opt/srv:/srv:ro"

@@ -1,0 +1,4 @@
+services:
+  caddy:
+    volumes:
+      - ./conf/sites-enabled/uptime-kuma.caddy:/etc/caddy/sites-enabled/uptime-kuma.caddy:ro

@@ -1,0 +1,4 @@
+services:
+  caddy:
+    volumes:
+      - ./conf/sites-enabled/syncthing.caddy:/etc/caddy/sites-enabled/syncthing.caddy:ro

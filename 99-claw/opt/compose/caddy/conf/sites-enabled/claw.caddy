@@ -1,0 +1,4 @@
+https://claw.{$DOMAIN} {
+	root * /claw/srv
+	file_server browse
+}

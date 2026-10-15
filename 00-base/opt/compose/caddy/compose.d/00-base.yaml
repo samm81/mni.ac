@@ -1,4 +1,4 @@
 services:
   caddy:
     volumes:
-      - ./conf/sites-enabled/base.caddy:/etc/caddy/sites-enabled/base.caddy:ro
+      - ./conf/sites-enabled/host-ports.caddy:/etc/caddy/sites-enabled/host-ports.caddy:ro

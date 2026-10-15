@@ -1,0 +1,6 @@
+https://dash.{$DOMAIN} {
+	#    basic_auth bcrypt {
+	#        {$BASIC_AUTH_CREDS}
+	#    }
+	reverse_proxy beszel:8090
+}

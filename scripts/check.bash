@@ -172,11 +172,11 @@ validate_compose() {
 
     (
         cd "$caddy_directory"
+        unset CLAW_SRV
         PUID=1000 \
             PGID=1000 \
             DOCKER_GID=1000 \
             DOMAIN=example.com \
-            CLAW_SRV="$tree_directory/opt/srv" \
             "$tree_directory/opt/scripts/docker-composex.bash" config --quiet
     )
 
@@ -194,7 +194,6 @@ validate_compose() {
                 PGID=1000 \
                 DOCKER_GID=1000 \
                 DOMAIN=example.com \
-                CLAW_SRV="$tree_directory/opt/srv" \
                 docker compose -f "$compose_name" config --quiet
         )
     done < <(
