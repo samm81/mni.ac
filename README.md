@@ -4,6 +4,8 @@ a few gnu stow packages for a single-user server
 
 ## usage
 
+1. install `stow`
+1. install Docker Engine with the Compose plugin
 1. `sudo loginctl enable-linger "$USER"`
 1. `git clone git@github.com:samm81/${REPO} "${HOME}/${REPO_ROOT}" && cd "${HOME}/${REPO_ROOT}"`
 1. `stow --dotfiles --no-folding 00-base 00-beszel 00-uptime-kuma`
@@ -11,6 +13,7 @@ a few gnu stow packages for a single-user server
 1. `cp ~/opt/compose/caddy/example.env ~/opt/compose/caddy/.env` and modify as needed
 1. `cp ~/opt/compose/beszel/{example.env.beszel,.env.beszel}` and modify as needed
 1. `cp ~/opt/compose/beszel/{example.env.beszel_agent,.env.beszel_agent}` and modify as needed
+1. install `restic`
 1. `stow --dotfiles 10-backup`
 1. `openssl rand -base64 48 > ~/.config/restic/password`
 1. `cp ~/.config/restic/{env.example,env}` and modify as needed
