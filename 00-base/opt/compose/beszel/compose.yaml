@@ -12,7 +12,7 @@ services:
     networks:
       - ingress
     healthcheck:
-      test: ['CMD', '/beszel', 'health', '--url', 'http://localhost:8090']
+      test: ["CMD", "/beszel", "health", "--url", "http://localhost:8090"]
       interval: 120s
       start_period: 10s
       timeout: 5s
@@ -33,7 +33,7 @@ services:
     env_file:
       - .env.beszel_agent
     healthcheck:
-      test: ['CMD', '/agent', 'health']
+      test: ["CMD", "/agent", "health"]
       interval: 120s
 
 networks:

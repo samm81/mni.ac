@@ -1,3 +1,3 @@
 https://pb.{$DOMAIN} {
-    reverse_proxy host.docker.internal:9910
+	reverse_proxy host.docker.internal:9910
 }

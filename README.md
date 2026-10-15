@@ -2,7 +2,7 @@
 
 a few gnu stow packages for a single-user server
 
-usage
+## usage
 
 1. `sudo loginctl enable-linger "$USER"`
 1. `git clone git@github.com:samm81/${REPO} "${HOME}/${REPO_ROOT}" && cd "${HOME}/${REPO_ROOT}"`
@@ -53,3 +53,8 @@ same as `zuo_shou`, with an `.env` file
 ### `timeline-cities`
 
 same as `zuo_shou` but with an `.env` file and a `.timer` `systemd` unit
+
+## development
+
+`make check` needs `shellcheck`, `shfmt`, `yamllint`, `markdownlint-cli2`,
+`prettier`, `docker`, and `stow`.
