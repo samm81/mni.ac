@@ -8,15 +8,14 @@ a few gnu stow packages for a single-user server
 1. install Docker Engine with the Compose plugin
 1. `sudo loginctl enable-linger "$USER"`
 1. `git clone git@github.com:samm81/${REPO} "${HOME}/${REPO_ROOT}" && cd "${HOME}/${REPO_ROOT}"`
-1. `stow --dotfiles --no-folding 00-base 00-beszel 00-uptime-kuma`
-1. `docker network inspect ingress >/dev/null 2>&1 || docker network create ingress`
-1. `cp ~/opt/compose/caddy/example.env ~/opt/compose/caddy/.env` and modify as needed
-1. `cp ~/opt/compose/beszel/{example.env.beszel,.env.beszel}` and modify as needed
-1. `cp ~/opt/compose/beszel/{example.env.beszel_agent,.env.beszel_agent}` and modify as needed
+1. `cp 00-caddy/opt/compose/caddy/{example.env,.env}` and modify as needed
+1. `cp 00-beszel/opt/compose/beszel/{example.env.beszel,.env.beszel}` and modify as needed
+1. `cp 00-beszel/opt/compose/beszel/{example.env.beszel_agent,.env.beszel_agent}` and modify as needed
 1. install `restic`
-1. `stow --dotfiles 10-backup`
-1. `openssl rand -base64 48 > ~/.config/restic/password`
-1. `cp ~/.config/restic/{env.example,env}` and modify as needed
+1. `openssl rand -base64 48 > 10-backup/dot-config/restic/password`
+1. `cp 10-backup/dot-config/restic/{env.example,env}` and modify as needed
+1. `stow --dotfiles --no-folding 00-base 00-caddy 00-beszel 00-uptime-kuma 10-backup`
+1. `docker network inspect ingress >/dev/null 2>&1 || docker network create ingress`
 1. `systemctl --user daemon-reload`
 1. `systemctl --user enable --now compose-app@caddy.service compose-app@beszel.service compose-app@uptime-kuma.service vps-backup.timer`
 
