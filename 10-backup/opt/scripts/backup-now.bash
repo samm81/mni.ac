@@ -15,19 +15,19 @@ find "$OUTDIR" -type f -name 'postgres-all-*.sql.gz' -mtime +7 -delete
 
 # Backup to restic
 restic backup \
-  "${HOME}/opt" \
-  --exclude "${HOME}/opt/**/node_modules" \
-  --exclude "${HOME}/opt/**/.cache" \
-  --exclude "${HOME}/opt/**/tmp" \
-  --exclude "${HOME}/opt/**/cache" \
-  "${HOME}/.local/state" \
-  --exclude-caches
+    "${HOME}/opt" \
+    --exclude "${HOME}/opt/**/node_modules" \
+    --exclude "${HOME}/opt/**/.cache" \
+    --exclude "${HOME}/opt/**/tmp" \
+    --exclude "${HOME}/opt/**/cache" \
+    "${HOME}/.local/state" \
+    --exclude-caches
 
 # Retention
 restic forget --prune \
-  --keep-daily 7 \
-  --keep-weekly 4 \
-  --keep-monthly 6
+    --keep-daily 7 \
+    --keep-weekly 4 \
+    --keep-monthly 6
 
 # register success with `uptime-kuma`
 curl -fsS "http://localhost:3001/api/push/NyxyUIg9u59PcneRj1wIiZXAuPcwhSSO?status=up&msg=backup-success&ping="

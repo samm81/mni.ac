@@ -4,37 +4,37 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 if [ ! -f apps.env ]; then
-  echo "missing apps.env"
-  exit 1
+    echo "missing apps.env"
+    exit 1
 fi
 
 source apps.env
 
 validate_name() {
-  local name="$1"
-  if ! [[ "$name" =~ ^[a-zA-Z0-9_]+$ ]]; then
-    echo "Invalid Postgres identifier: $name"
-    echo "Use only letters, numbers, and underscores."
-    exit 1
-  fi
+    local name="$1"
+    if ! [[ "$name" =~ ^[a-zA-Z0-9_]+$ ]]; then
+        echo "Invalid Postgres identifier: $name"
+        echo "Use only letters, numbers, and underscores."
+        exit 1
+    fi
 }
 
 escape_sql_literal() {
-  # Escape single quotes for SQL string literals.
-  printf "%s" "$1" | sed "s/'/''/g"
+    # Escape single quotes for SQL string literals.
+    printf "%s" "$1" | sed "s/'/''/g"
 }
 
 for entry in "${POSTGRES_APPS[@]}"; do
-  IFS=':' read -r db user password <<< "$entry"
+    IFS=':' read -r db user password <<< "$entry"
 
-  validate_name "$db"
-  validate_name "$user"
+    validate_name "$db"
+    validate_name "$user"
 
-  password_escaped="$(escape_sql_literal "$password")"
+    password_escaped="$(escape_sql_literal "$password")"
 
-  echo "Applying db=$db user=$user"
+    echo "Applying db=$db user=$user"
 
-  docker exec postgres-postgres-1 psql -U postgres -d postgres <<SQL
+    docker exec postgres-postgres-1 psql -U postgres -d postgres << SQL
 DO \$\$
 BEGIN
   IF NOT EXISTS (

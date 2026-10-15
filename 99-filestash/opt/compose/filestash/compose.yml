@@ -1,30 +1,29 @@
-version: '2'
 services:
   filestash:
     container_name: filestash
     image: machines/filestash:latest
     restart: always
     environment:
-    - APPLICATION_URL=
-    - CANARY=true
-    # to reset the password, first generate a `bcrypt` of some temp password
-    # https://www.filestash.app/2023/05/01/bcrypt-online/
-    # then set it here as the `ADMIN_PASSWORD`
-    # make sure to `s/\$/$$/g`
-    # then restart the docker service
-    #- ADMIN_PASSWORD=$$2y$$12$$xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    # then go to https://stsh.${DOMAIN}/admin/setup
-    #
-    #- OFFICE_URL=http://wopi_server:9980
-    #- OFFICE_FILESTASH_URL=http://app:8334
-    #- OFFICE_REWRITE_URL=http://127.0.0.1:9980
+      - APPLICATION_URL=
+      - CANARY=true
+      # to reset the password, first generate a `bcrypt` of some temp password
+      # https://www.filestash.app/2023/05/01/bcrypt-online/
+      # then set it here as the `ADMIN_PASSWORD`
+      # make sure to `s/\$/$$/g`
+      # then restart the docker service
+      # - ADMIN_PASSWORD=$$2y$$12$$xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      # then go to https://stsh.${DOMAIN}/admin/setup
+      #
+      # - OFFICE_URL=http://wopi_server:9980
+      # - OFFICE_FILESTASH_URL=http://app:8334
+      # - OFFICE_REWRITE_URL=http://127.0.0.1:9980
     volumes:
-    - "${HOME}/opt/state/filestash/state:/app/data/state/"
-    - "${HOME}/syncthing:/mnt/syncthing/"
+      - "${HOME}/opt/state/filestash/state:/app/data/state/"
+      - "${HOME}/syncthing:/mnt/syncthing/"
     networks:
       - ingress
 
-  #wopi_server:
+  # wopi_server:
   #  container_name: filestash_wopi
   #  image: collabora/code:24.04.10.2.1
   #  restart: always
@@ -45,4 +44,3 @@ networks:
   ingress:
     external: true
     name: ingress
-
