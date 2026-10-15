@@ -1,0 +1,5 @@
+services:
+  caddy:
+    volumes:
+      - ./conf/sites-enabled/claw.caddy:/etc/caddy/sites-enabled/claw.caddy:ro
+      - "${CLAW_SRV:?missing CLAW_SRV}:/claw/srv:ro"

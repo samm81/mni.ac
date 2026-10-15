@@ -25,13 +25,28 @@ if [[ -d compose.d ]]; then
     )
 fi
 
+env_files_fragment=()
+if [[ -d .env.d ]]; then
+    while IFS= read -r -d '' env_file_fragment; do
+        env_files_fragment+=(--env-file "$env_file_fragment")
+    done < <(
+        find -L .env.d -maxdepth 1 -type f -name '*.env' -print0 \
+            | sort -z
+    )
+fi
+
+if ((${#env_files_fragment[@]} > 0)) && [[ -f .env ]]; then
+    env_files_fragment+=(--env-file .env)
+fi
+
 if ((${#compose_files_fragment[@]} > 0)); then
     if [[ -z $compose_file_base ]]; then
         printf 'missing base compose file in %s\n' "$PWD" >&2
         exit 1
     fi
 
-    exec docker compose -f "$compose_file_base" "${compose_files_fragment[@]}" "$@"
+    exec docker compose "${env_files_fragment[@]}" \
+        -f "$compose_file_base" "${compose_files_fragment[@]}" "$@"
 fi
 
-exec docker compose "$@"
+exec docker compose "${env_files_fragment[@]}" "$@"

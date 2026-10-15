@@ -1,0 +1,3 @@
+https://status.{$DOMAIN} {
+	reverse_proxy uptime-kuma:3001
+}

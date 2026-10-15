@@ -1,0 +1,4 @@
+https://a.{$DOMAIN} {
+	root * /srv
+	file_server browse
+}

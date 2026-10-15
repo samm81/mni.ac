@@ -6,7 +6,7 @@ a few gnu stow packages for a single-user server
 
 1. `sudo loginctl enable-linger "$USER"`
 1. `git clone git@github.com:samm81/${REPO} "${HOME}/${REPO_ROOT}" && cd "${HOME}/${REPO_ROOT}"`
-1. `stow --dotfiles 00-base`
+1. `stow --dotfiles --no-folding 00-base 00-beszel 00-uptime-kuma`
 1. `docker network inspect ingress >/dev/null 2>&1 || docker network create ingress`
 1. `cp ~/opt/compose/caddy/example.env ~/opt/compose/caddy/.env` and modify as needed
 1. `cp ~/opt/compose/beszel/{example.env.beszel,.env.beszel}` and modify as needed
@@ -16,11 +16,19 @@ a few gnu stow packages for a single-user server
 1. `cp ~/.config/restic/{env.example,env}` and modify as needed
 1. `systemctl --user daemon-reload`
 1. `systemctl --user enable --now compose-app@caddy.service compose-app@beszel.service compose-app@uptime-kuma.service vps-backup.timer`
-1. [install and configure `syncthing`](https://docs.syncthing.net/intro/getting-started.html#getting-started)
 
 ## optional packages
 
-generally: run `stow --dotfiles <package>` from `~/${REPO_ROOT}`. follow the package instructions before enabling its service.
+generally: run `stow --dotfiles --no-folding <package>` from `~/${REPO_ROOT}`. follow the package instructions before enabling its service.
+
+### `claw`
+
+the package sets `CLAW_SRV` in `~/opt/compose/caddy/.env.d/99-claw.env`.
+set a different path in `~/opt/compose/caddy/.env` if needed.
+
+### `srv`
+
+stow `99-srv` to serve `~/opt/srv` at `a.${DOMAIN}`.
 
 ### `cockpit` (recommended)
 
@@ -32,11 +40,19 @@ generally: run `stow --dotfiles <package>` from `~/${REPO_ROOT}`. follow the pac
 1. `sudo systemctl restart cockpit.service`
 1. `systemctl --user restart compose-app@caddy.service`
 
+### `syncthing`
+
+1. [install and configure `syncthing`](https://docs.syncthing.net/intro/getting-started.html#getting-started)
+1. `stow --dotfiles --no-folding 70-syncthing`
+1. `systemctl --user restart compose-app@caddy.service`
+
 ### `postgres`
 
 1. after `postgres` starts, run `~/opt/compose/postgres/configure.bash`
 
 ### `zuo_shou`
+
+depends on `syncthing`
 
 1. [on dev server] `git clone zuo_shou && cd zuo_shou`
 1. [on dev server] set `DEPLOY_PATH='hostname.tld:~/opt/apps/zuo_shou'` in `.env`
@@ -51,6 +67,8 @@ depends on `postgres`
 same as `zuo_shou`, with an `.env` file
 
 ### `timeline-cities`
+
+depends on `syncthing`
 
 same as `zuo_shou` but with an `.env` file and a `.timer` `systemd` unit
 
