@@ -1,0 +1,6 @@
+[Unit]
+Description=Restart the Filestash compose app
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl --user try-restart compose-app@filestash.service

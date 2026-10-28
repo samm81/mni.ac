@@ -32,6 +32,14 @@ set a different path in `~/opt/compose/caddy/.env` if needed.
 
 stow `99-srv` to serve `~/opt/srv` at `a.${DOMAIN}`.
 
+### `filestash`
+
+1. `stow --dotfiles --no-folding 99-filestash`
+1. `systemctl --user daemon-reload`
+1. `systemctl --user enable --now compose-app@filestash.service filestash-restart.timer`
+
+the timer restarts filestash daily at 05:00 in the server's local timezone.
+
 ### `cockpit` (recommended)
 
 1. [install and configure `cockpit`](https://cockpit-project.org/running.html)
