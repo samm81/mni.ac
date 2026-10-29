@@ -8,3 +8,8 @@
 /postgres/opt/compose/postgres/apps.env
 
 /30-cockpit-system/etc/cockpit/cockpit.conf
+
+/99-sing-box/opt/compose/sing-box/config.json
+/99-sing-box/opt/compose/sing-box/hysteria2-outbound.json
+/99-sing-box/opt/compose/sing-box/mihomo-proxies.yaml
+/99-sing-box/opt/compose/sing-box/vless-reality-outbound.json

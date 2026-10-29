@@ -1,0 +1,58 @@
+{
+  "$schema": "https://sing-box.sagernet.org/schema.json",
+  "log": {
+    "level": "info"
+  },
+  "inbounds": [
+    {
+      "type": "hysteria2",
+      "tag": "hysteria2-in",
+      "listen": "::",
+      "listen_port": 8443,
+      "users": [
+        {
+          "name": "client",
+          "password": "generate with: openssl rand -hex 32"
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "server_name": "example.com",
+        "certificate_path": "/etc/sing-box/certs/example.com.crt",
+        "key_path": "/etc/sing-box/certs/example.com.key"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "vless-reality-in",
+      "listen": "::",
+      "listen_port": 8443,
+      "users": [
+        {
+          "name": "client",
+          "uuid": "generate with: docker run --rm ghcr.io/sagernet/sing-box generate uuid",
+          "flow": "xtls-rprx-vision"
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "server_name": "example.com",
+        "reality": {
+          "enabled": true,
+          "handshake": {
+            "server": "example.com",
+            "server_port": 443
+          },
+          "private_key": "generate with: docker run --rm ghcr.io/sagernet/sing-box generate reality-keypair; use PrivateKey output",
+          "short_id": ["generate with: openssl rand -hex 8"]
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ]
+}

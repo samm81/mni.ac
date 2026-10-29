@@ -1,0 +1,12 @@
+services:
+  sing-box:
+    image: ghcr.io/sagernet/sing-box:latest
+    restart: unless-stopped
+    user: "${PUID:?missing PUID}:${PGID:?missing PGID}"
+    volumes:
+      - ./config.json:/etc/sing-box/config.json:ro
+      - "${HOME}/opt/state/caddy/data/caddy/certificates/${CADDY_CERTIFICATE_ISSUER:?missing CADDY_CERTIFICATE_ISSUER}/${DOMAIN:?missing DOMAIN}:/etc/sing-box/certs:ro"
+    ports:
+      - "8443:8443/tcp"
+      - "8443:8443/udp"
+    command: ["-C", "/etc/sing-box", "run"]
