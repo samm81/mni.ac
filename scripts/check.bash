@@ -194,6 +194,7 @@ validate_compose() {
                 PGID=1000 \
                 DOCKER_GID=1000 \
                 DOMAIN=example.com \
+                CADDY_CERTIFICATE_ISSUER='example-issuer' \
                 docker compose -f "$compose_name" config --quiet
         )
     done < <(
